@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="format-detection" content="telephone=no">
+  <title>Daniela & Javier</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500;700&family=Cormorant+Garamond:wght@600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    /* ✅ Transición suave al cargar: 6 segundos */
+    html {
+      opacity: 0;
+      transition: opacity 6s ease-out;
+    }
+    html.loaded {
+      opacity: 1;
+    }
+    html, body {
+      width: 100%;
+      overflow-x: hidden;
+      -webkit-text-size-adjust: 100%;
+    }
+    body {
+      background-color: #000000;
+      color: #ffffff;
+      font-family: 'Playfair Display', serif;
+      line-height: 1.5;
+    }
+    section {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      touch-action: manipulation;
+    }
+    /* === SECCIÓN 1 === */
+    .section-1 {
+      width: 100%;
+      height: 100vh;   /* fallback */
+      height: 100dvh;  /* modern */
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .image-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    .main-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+    .image-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 35%;
+      background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.95) 0%,
+        rgba(0, 0, 0, 0.7) 25%,
+        transparent 100%
+      );
+      pointer-events: none;
+      z-index: 2;
+    }
+    .date-image {
+      position: absolute;
+      bottom: 8%;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      max-width: 25%;
+      height: auto;
+      opacity: 0;
+      animation: fadeInDate 10s ease-out 0.5s forwards;
+    }
+    @keyframes fadeInDate {
+      to { opacity: 1; }
+    }
+    /* === SECCIÓN 2 === */
+    .section-2 {
+      background-color: #000000;
+      padding: 60px 16px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .logo-wrapper img {
+      max-width: 60%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+    @media (min-width: 480px) {
+      .logo-wrapper img {
+        max-width: 50%;
+      }
+    }
+    /* === SECCIÓN 3: POEMA === */
+    .section-3 {
+      background-color: #ffffff;
+      color: #000000;
+      padding: 50px 16px;
+      width: 100%;
+    }
+    .poem-container {
+      max-width: 800px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+      margin: 0 auto;
+    }
+    .poem-block {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      width: 100%;
+      max-width: 700px;
+      padding: 16px;
+      border-radius: 12px;
+      transition: opacity 0.5s ease, transform 0.4s ease;
+    }
+    .poem-block:not(.active) {
+      opacity: 0.62;
+      transform: scale(0.98);
+    }
+    .poem-block.active {
+      opacity: 1;
+      transform: scale(1);
+      background-color: rgba(0, 0, 0, 0.02);
+    }
+    .poem-image {
+      flex: 0 0 36%;
+      max-width: 180px;
+      min-width: 0;
+      display: flex;
+      justify-content: center;
+    }
+    .poem-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      display: block;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: opacity 0.4s ease;
+    }
+    .poem-block:not(.active) .poem-image img {
+      opacity: 0.7;
+    }
+    .poem-block.active .poem-image img {
+      opacity: 1;
+    }
+    .poem-text {
+      flex: 1;
+      min-width: 0;
+      font-size: clamp(1.15rem, 4.6vw, 1.45rem);
+      line-height: 1.6;
+      color: #000000;
+      text-align: left;
+      padding: 0 10px;
+    }
+    .poem-block:nth-child(3) .poem-text {
+      font-weight: 700;
+      font-size: clamp(1.3rem, 5.2vw, 1.7rem);
+    }
+    .poem-text span {
+      display: block;
+      margin-bottom: 7px;
+    }
+    @media (max-width: 480px) {
+      .poem-block {
+        gap: 16px;
+        padding: 12px 8px;
+      }
+      .poem-image {
+        flex: 0 0 44%;
+        max-width: 140px;
+      }
+      .poem-text {
+        font-size: clamp(1.08rem, 4.8vw, 1.3rem);
+        padding: 0 8px;
+      }
+    }
+    /* === SECCIÓN 4 === */
+    .section-4 {
+      background-color: #000000;
+      padding: 50px 16px;
+      width: 100%;
+    }
+    .card-wrapper {
+      background-color: #ffffff;
+      color: #000000;
+      max-width: 600px;
+      width: 100%;
+      padding: 30px 20px;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+      text-align: center;
+    }
+    .countdown-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(2.2rem, 8vw, 3rem);
+      color: #000000;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+    .countdown-message {
+      font-size: clamp(1.15rem, 4.2vw, 1.4rem);
+      color: #333333;
+      line-height: 1.5;
+      margin: 0 auto 25px;
+    }
+    .countdown-timer-paper {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+      flex-wrap: nowrap;
+    }
+    .paper-card {
+      background: #000000;
+      border: 1px solid #333333;
+      border-radius: 8px;
+      padding: 10px 6px;
+      min-width: 50px;
+      text-align: center;
+    }
+    .paper-number {
+      font-size: clamp(1.4rem, 5.5vw, 1.8rem);
+      font-weight: 700;
+      color: #ffffff;
+    }
+    .paper-label {
+      font-size: clamp(0.6rem, 2.2vw, 0.75rem);
+      color: #cccccc;
+      margin-top: 4px;
+      text-transform: lowercase;
+      letter-spacing: 0.5px;
+    }
+    /* === SECCIÓN 5 === */
+    .section-5 {
+      background-color: #ffffff;
+      padding: 50px 16px;
+      width: 100%;
+    }
+    .location-wrapper {
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+      margin: 0 auto;
+    }
+    .location-title-great-vibes {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(4.8rem, 17vw, 6.4rem);
+      color: #000000;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+    .location-region {
+      font-size: clamp(1.4rem, 5vw, 1.8rem);
+      font-weight: 600;
+      margin-bottom: 25px;
+      color: #000000;
+    }
+    .image-carousel {
+      position: relative;
+      width: 100%;
+      max-width: 500px;
+      height: 260px;
+      margin: 0 auto 25px;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+    .carousel-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+    }
+    .carousel-image.active {
+      opacity: 1;
+    }
+    .venue-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 5vw, 1.8rem);
+      font-weight: 700;
+      color: #000000;
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+    .time-icon {
+      width: 28px;
+      height: auto;
+      margin: 0 auto 10px;
+      display: block;
+    }
+    .event-time {
+      font-size: clamp(1.25rem, 4.8vw, 1.45rem);
+      color: #333333;
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+    .full-address {
+      font-size: clamp(1.1rem, 4.2vw, 1.3rem);
+      color: #333333;
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+    .address-line {
+      display: block;
+    }
+    .location-icon {
+      width: 32px;
+      height: auto;
+      margin: 0 auto 12px;
+      display: block;
+    }
+    .map-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: #000000;
+      color: #ffffff !important;
+      text-decoration: none;
+      padding: 8px 20px;
+      border-radius: 24px;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.05rem, 4vw, 1.25rem);
+      font-weight: 500;
+      margin: 0 auto;
+      transition: background-color 0.3s, transform 0.2s;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+      white-space: nowrap;
+      line-height: 1.3;
+    }
+    .map-button:hover {
+      background-color: #333333;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 14px rgba(0, 0, 0, 0.18);
+    }
+    .location-divider {
+      height: 1px;
+      background: #e0e0e0;
+      margin: 40px auto;
+      width: 80%;
+    }
+    /* === SECCIÓN 6: IMAGEN NOVIOS === */
+    .section-couple-fullscreen {
+      width: 100%;
+      height: 80vh;
+      height: 80dvh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+    }
+    .couple-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      display: block;
+    }
+    @media (min-width: 769px) {
+      .section-couple-fullscreen {
+        height: 100vh;
+        height: 100dvh;
+      }
+    }
+    /* === SECCIÓN 7: ITINERARIO === */
+    .section-itinerary {
+      background-color: #ffffff;
+      color: #000000;
+      padding: 60px 16px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .itinerary-wrapper {
+      max-width: 650px;
+      width: 100%;
+      text-align: left;
+    }
+    .itinerary-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(4.8rem, 17vw, 6.4rem);
+      color: #000000;
+      margin-bottom: 40px;
+      line-height: 1.2;
+      text-align: center;
+    }
+    .itinerary-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 24px 0;
+      padding: 16px;
+      border-radius: 12px;
+      transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.3, 1);
+    }
+    .time-icon {
+      width: 28px;
+      height: auto;
+      object-fit: contain;
+      opacity: 0.8;
+      transition: opacity 0.3s, filter 0.3s;
+      filter: brightness(0) invert(0);
+    }
+    .itinerary-item.active .time-icon {
+      opacity: 1;
+      filter: brightness(0) invert(1);
+    }
+    .time {
+      font-weight: 700;
+      font-size: clamp(1.2rem, 4.8vw, 1.5rem);
+      min-width: 80px;
+      text-align: left;
+    }
+    .event {
+      font-size: clamp(1.15rem, 4.6vw, 1.45rem);
+      flex: 1;
+      text-align: left;
+    }
+    .itinerary-item.active {
+      transform: scale(1.04);
+      background-color: #000000;
+    }
+    .itinerary-item.active .time,
+    .itinerary-item.active .event {
+      color: #ffffff;
+    }
+    @media (max-width: 480px) {
+      .itinerary-item {
+        gap: 12px;
+        margin: 20px 0;
+        padding: 14px;
+      }
+      .time-icon {
+        width: 24px;
+      }
+      .time {
+        min-width: 70px;
+        font-size: clamp(1.1rem, 4.5vw, 1.35rem);
+      }
+      .event {
+        font-size: clamp(1.05rem, 4.4vw, 1.3rem);
+      }
+    }
+    /* === SECCIÓN 8: IMAGEN FINAL === */
+    .section-itinerary-image {
+      width: 100%;
+      height: 80vh;
+      height: 80dvh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+    }
+    .itinerary-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 85%;
+      display: block;
+    }
+    @media (min-width: 769px) {
+      .section-itinerary-image {
+        height: 100vh;
+        height: 100dvh;
+      }
+    }
+    /* === SECCIÓN 9 Y 10: PADRES, PADRINOS E IMAGEN === */
+    .section-parents {
+      background-color: #ffffff;
+      color: #000000;
+      padding: 60px 16px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .section-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(2.8rem, 10vw, 3.6rem);
+      color: #000000;
+      margin-bottom: 40px;
+      line-height: 1.2;
+      text-align: center;
+    }
+    .parents-group, .godparents-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      max-width: 600px;
+      width: 100%;
+      margin-bottom: 40px;
+    }
+    .parent-image, .godparent-image {
+      width: auto;
+      height: 150px;
+      max-height: 180px;
+      object-fit: contain;
+      margin: 0 0 16px 0;
+      display: block;
+    }
+    .parent-names, .godparent-names {
+      font-size: clamp(1.3rem, 5vw, 1.6rem);
+      font-weight: 500;
+      text-align: center;
+      line-height: 1.6;
+    }
+    .godparent-role {
+      font-size: clamp(1.2rem, 4.8vw, 1.5rem);
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #000000;
+      text-align: center;
+    }
+    .ampersand {
+      display: block;
+      font-size: clamp(1.1rem, 4.5vw, 1.4rem);
+      font-weight: 400;
+      margin: 4px 0;
+      color: #666666;
+    }
+    .divider {
+      height: 1px;
+      background: #e0e0e0;
+      margin: 30px auto;
+      width: 60%;
+    }
+    .section-parents-image {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+      background-color: #000000;
+      height: auto;
+    }
+    .parents-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0;
+    }
+    @media (min-width: 769px) {
+      .section-parents-image {
+        height: 100vh;
+        height: 100dvh;
+      }
+      .parents-img {
+        width: auto;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        min-width: 100%;
+      }
+    }
+    /* === SECCIÓN 11: CÓDIGO DE VESTIMENTA === */
+    .section-dresscode {
+      background-color: #ffffff;
+      color: #000000;
+      padding: 60px 16px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .dresscode-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(2.8rem, 10vw, 3.6rem);
+      color: #000000;
+      margin-bottom: 40px;
+      line-height: 1.2;
+      text-align: center;
+    }
+    .dresscode-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      max-width: 600px;
+      width: 100%;
+      margin-bottom: 45px;
+    }
+    .dresscode-image {
+      width: 160px;
+      height: auto;
+      object-fit: contain;
+      margin: 0 0 16px 0;
+      display: block;
+    }
+    .dresscode-role {
+      font-size: clamp(1.25rem, 5vw, 1.55rem);
+      font-weight: 700;
+      margin-bottom: 14px;
+      color: #000000;
+      text-align: center;
+    }
+    .dresscode-text {
+      font-size: clamp(1.15rem, 4.6vw, 1.4rem);
+      text-align: center;
+      line-height: 1.7;
+      color: #000000;
+    }
+    .dresscode-text.highlight {
+      font-weight: 600;
+    }
+    .kids-message {
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+      margin: 40px 0;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.02);
+      border-radius: 12px;
+    }
+    .kids-message strong {
+      font-weight: 700;
+      display: block;
+      margin-bottom: 12px;
+      font-size: clamp(1.2rem, 4.8vw, 1.5rem);
+    }
+    .gift-section {
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+      margin-top: 50px;
+    }
+    .gift-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(2.6rem, 9.5vw, 3.4rem);
+      color: #000000;
+      margin-bottom: 30px;
+      line-height: 1.2;
+    }
+    .gift-box,
+    .gift-store-logo {
+      width: 160px;
+      height: auto;
+      margin: 0 auto 12px;
+      display: block;
+    }
+    .gift-number {
+      font-size: clamp(1.8rem, 7vw, 2.4rem);
+      font-weight: 700;
+      color: #000000;
+      margin: 20px 0;
+      letter-spacing: 1px;
+    }
+    .gift-button,
+    .rsvp-button {
+      display: inline-block;
+      background-color: #000000;
+      color: #ffffff !important;
+      text-decoration: none;
+      padding: 8px 20px;
+      border-radius: 24px;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.05rem, 4vw, 1.25rem);
+      font-weight: 600;
+      margin-top: 12px;
+      transition: all 0.3s ease;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+      line-height: 1.3;
+    }
+    .gift-button:hover,
+    .rsvp-button:hover {
+      background-color: #333333;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 14px rgba(0, 0, 0, 0.18);
+    }
+    .dresscode-divider {
+      height: 1px;
+      background: #e0e0e0;
+      margin: 30px auto;
+      width: 60%;
+    }
+    /* === SECCIÓN 12: IMAGEN SEPARADORA === */
+    .section-dresscode-image {
+      width: 100%;
+      height: 80vh;
+      height: 80dvh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+    }
+    .dresscode-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      display: block;
+    }
+    @media (min-width: 769px) {
+      .section-dresscode-image {
+        height: 100vh;
+        height: 100dvh;
+      }
+    }
+    /* === SECCIÓN 13: RSVP === */
+    .section-rsvp {
+      background-color: #ffffff;
+      color: #000000;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 60px 16px;
+      box-sizing: border-box;
+    }
+    .rsvp-wrapper {
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .rsvp-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(2.8rem, 10vw, 3.6rem);
+      color: #000000;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+    .rsvp-text {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.2rem, 4.5vw, 1.5rem);
+      color: #333333;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+    /* === SECCIÓN 14: AGRADECIMIENTO FINAL === */
+    .section-thanks {
+      width: 100%;
+      height: 100vh;   /* fallback */
+      height: 100dvh;  /* modern */
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .thanks-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+    .thanks-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 35%;
+      background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.95) 0%,
+        rgba(0, 0, 0, 0.7) 25%,
+        transparent 100%
+      );
+      pointer-events: none;
+      z-index: 1;
+    }
+    .thanks-text {
+      position: absolute;
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(2.2rem, 8vw, 3rem);
+      color: white;
+      z-index: 2;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+      padding: 0 16px;
+      left: 16px;
+      bottom: 20%;
+      text-align: left;
+    }
+    @media (max-width: 768px) {
+      .thanks-text {
+        bottom: 12%;
+        font-size: clamp(1.8rem, 7vw, 2.4rem);
+      }
+    }
+    .final-footer {
+      background-color: #000000;
+      color: #ffffff;
+      padding: 40px 16px 60px;
+      width: 100%;
+      text-align: center;
+    }
+    .initials {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(1.8rem, 7vw, 2.4rem);
+      color: #ffffff;
+      margin-bottom: 8px;
+      letter-spacing: 2px;
+    }
+    .wedding-date {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.1rem, 4.2vw, 1.35rem);
+      color: #aaaaaa;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+    /* === BOTÓN DE AUDIO === */
+    #audio-toggle {
+      position: fixed;
+      bottom: 20vh;
+      right: 24px;
+      width: 56px;
+      height: 56px;
+      background: rgba(0, 0, 0, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 1000;
+      transition: all 0.3s ease;
+      -webkit-tap-highlight-color: transparent;
+      -webkit-focus-ring-color: transparent;
+      outline: none;
+      user-select: none;
+    }
+    #audio-toggle:hover {
+      background: rgba(0, 0, 0, 0.85);
+      transform: scale(1.05);
+    }
+    #audio-toggle svg {
+      width: 24px;
+      height: 24px;
+      fill: white;
+    }
+  </style>
+</head>
+<body>
+  <!-- SECCIÓN 1 -->
+  <section class="section-1" id="section-1">
+    <div class="image-container">
+      <img src="boda1.jpg" class="main-image" alt="Invitación de boda">
+      <div class="image-overlay"></div>
+      <img src="fecha.png" class="date-image" alt="30.Nov.25">
+    </div>
+  </section>
+  <!-- SECCIÓN 2 -->
+  <section class="section-2">
+    <div class="logo-wrapper">
+      <img src="Logo.png" alt="Daniela y Javier">
+    </div>
+  </section>
+  <!-- SECCIÓN 3 -->
+  <section class="section-3">
+    <div class="poem-container">
+      <div class="poem-block" data-index="0">
+        <div class="poem-image">
+          <img src="p1.jpg" alt="Momento">
+        </div>
+        <div class="poem-text">
+          <span>En el</span>
+          <span>momento que</span>
+          <span>nos tomamos</span>
+          <span>de la mano.</span>
+          <span>comprendimos</span>
+          <span>que...</span>
+        </div>
+      </div>
+      <div class="poem-block" data-index="1">
+        <div class="poem-image">
+          <img src="p2.jpg" alt="Almas">
+        </div>
+        <div class="poem-text">
+          <span>De lo que sea</span>
+          <span>que estén</span>
+          <span>hechas</span>
+          <span>las almas...</span>
+        </div>
+      </div>
+      <div class="poem-block" data-index="2">
+        <div class="poem-image">
+          <img src="p3.jpg" alt="Unión">
+        </div>
+        <div class="poem-text">
+          <span>La tuya</span>
+          <span>y la mía</span>
+          <span>son lo</span>
+          <span>mismo.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- SECCIÓN 4 -->
+  <section class="section-4">
+    <div class="card-wrapper">
+      <div class="countdown-image">
+        <img src="contador.jpg" alt="Cuenta regresiva" style="max-width:100%;height:auto;border-radius:8px;">
+      </div>
+      <div class="countdown-title">Daniela y Javier</div>
+      <div class="countdown-message">
+        Hoy empieza la mejor<br>
+        historia jamás escrita,<br>
+        <strong>la Nuestra.</strong>
+      </div>
+      <div class="countdown-timer-paper">
+        <div class="paper-card">
+          <div class="paper-number" id="days">--</div>
+          <div class="paper-label">días</div>
+        </div>
+        <div class="paper-card">
+          <div class="paper-number" id="hours">--</div>
+          <div class="paper-label">horas</div>
+        </div>
+        <div class="paper-card">
+          <div class="paper-number" id="minutes">--</div>
+          <div class="paper-label">minutos</div>
+        </div>
+        <div class="paper-card">
+          <div class="paper-number" id="seconds">--</div>
+          <div class="paper-label">segundos</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- SECCIÓN 5 -->
+  <section class="section-5">
+    <div class="location-wrapper">
+      <div class="location-title-great-vibes">¿Dónde?</div>
+      <div class="location-region">Tlaxcalancingo, Puebla.</div>
+      <div class="image-carousel">
+        <img src="1.jpg" class="carousel-image active" alt="Parroquia San Bernardino">
+        <img src="2.jpg" class="carousel-image" alt="San Bernardino Tlaxcalancingo">
+        <img src="3.jpg" class="carousel-image" alt="Ceremonia">
+      </div>
+      <div class="event-details">
+        <div class="venue-name">Parroquia San Bernardino</div>
+        <img src="reloj.png" class="time-icon" alt="Hora">
+        <div class="event-time">05:00 p.m.</div>
+        <div class="full-address">
+          <span class="address-line">San Bernardino Tlaxcalancingo. No. 479°</span>
+          <span class="address-line">San Andrés Cholula, Puebla, C.P. 72820</span>
+        </div>
+        <img src="U1.jpg" class="location-icon" alt="Ubicación">
+        <a href="https://www.google.com.mx/maps/place/Parroquia+San+Bernardino/@19.0296461,-98.2755619,19.75z/data=!4m6!3m5!1s0x85cfc7a32e1b3d21:0xed2f1bfc83469bea!8m2!3d19.0299085!4d-98.2754677!16s%2Fg%2F1td1q6k2?entry=tts" 
+           target="_blank" class="map-button">
+          Ver ubicación
+        </a>
+      </div>
+      <div class="location-divider"></div>
+      <div class="location-region">Hotel Posada Señorial</div>
+      <div class="image-carousel">
+        <img src="H1.jpg" class="carousel-image active" alt="Hotel Posada Señorial">
+        <img src="H2.jpg" class="carousel-image" alt="Salón Aquiahuac">
+        <img src="H3.jpg" class="carousel-image" alt="Recepción">
+      </div>
+      <div class="event-details">
+        <div class="venue-name">Salón Aquiahuac</div>
+        <img src="reloj.png" class="time-icon" alt="Hora">
+        <div class="event-time">07:00 p.m.</div>
+        <div class="full-address">
+          <span class="address-line">Av. 5 de Mayo 1400,</span>
+          <span class="address-line">San Juan Aquiahuac, 72810</span>
+          <span class="address-line">San Andrés Cholula, Pue.</span>
+        </div>
+        <img src="U2.jpg" class="location-icon" alt="Ubicación">
+        <a href="https://www.google.com/maps/place/Hotel+Posada+Se%C3%B1orial/@19.0584946,-98.2990561,1027m/data=!3m2!1e3!4b1!4m9!3m8!1s0x85cfc631c6ea3a9d:0x4cc08d1a07bf461!5m2!4m1!1i2!8m2!3d19.0584895!4d-98.2964812!16s%2Fg%2F1tf_hrk1?entry=tts" 
+           target="_blank" class="map-button">
+          Ver ubicación
+        </a>
+      </div>
+    </div>
+  </section>
+  <!-- SECCIÓN 6 -->
+  <section class="section-couple-fullscreen">
+    <img src="boda9.jpg" class="couple-img" alt="Daniela y Javier">
+  </section>
+  <!-- SECCIÓN 7 -->
+  <section class="section-itinerary">
+    <div class="itinerary-wrapper">
+      <div class="itinerary-title">Itinerario</div>
+      <div class="itinerary-item" data-index="0">
+        <img src="1.png" class="time-icon" alt="Ceremonia">
+        <div class="time">17:00</div>
+        <div class="event">Ceremonia Religiosa</div>
+      </div>
+      <div class="itinerary-item" data-index="1">
+        <img src="2.png" class="time-icon" alt="Recepción">
+        <div class="time">19:00</div>
+        <div class="event">Recepción</div>
+      </div>
+      <div class="itinerary-item" data-index="2">
+        <img src="3.png" class="time-icon" alt="Entrada">
+        <div class="time">19:45</div>
+        <div class="event">Entrada de los Novios</div>
+      </div>
+      <div class="itinerary-item" data-index="3">
+        <img src="8.png" class="time-icon" alt="Cena">
+        <div class="time">20:30</div>
+        <div class="event">Cena</div>
+      </div>
+      <div class="itinerary-item" data-index="4">
+        <img src="3.png" class="time-icon" alt="Vals">
+        <div class="time">21:30</div>
+        <div class="event">Vals</div>
+      </div>
+      <div class="itinerary-item" data-index="5">
+        <img src="4.png" class="time-icon" alt="Brindis">
+        <div class="time">22:00</div>
+        <div class="event">Brindis y Discurso</div>
+      </div>
+      <div class="itinerary-item" data-index="6">
+        <img src="7.png" class="time-icon" alt="Pista">
+        <div class="time">22:30</div>
+        <div class="event">Todos a la pista</div>
+      </div>
+      <div class="itinerary-item" data-index="7">
+        <img src="6.png" class="time-icon" alt="Ramo">
+        <div class="time">00:00</div>
+        <div class="event">Lanzamiento del Ramo y Liga</div>
+      </div>
+      <div class="itinerary-item" data-index="8">
+        <img src="5.png" class="time-icon" alt="Pastel">
+        <div class="time">00:30</div>
+        <div class="event">Pastel</div>
+      </div>
+      <div class="itinerary-item" data-index="9">
+        <img src="7.png" class="time-icon" alt="Pista">
+        <div class="time">01:00</div>
+        <div class="event">Seguimos en Pista</div>
+      </div>
+      <div class="itinerary-item" data-index="10">
+        <img src="8.png" class="time-icon" alt="Cena">
+        <div class="time">01:30</div>
+        <div class="event">Tornamesa</div>
+      </div>
+      <div class="itinerary-item" data-index="11">
+        <img src="7.png" class="time-icon" alt="Pista">
+        <div class="time">02:00</div>
+        <div class="event">Seguimos bailando</div>
+      </div>
+      <div class="itinerary-item" data-index="12">
+        <img src="9.png" class="time-icon" alt="Cierre">
+        <div class="time">03:00</div>
+        <div class="event">Cierre</div>
+      </div>
+    </div>
+  </section>
+  <!-- SECCIÓN 8 -->
+  <section class="section-itinerary-image">
+    <img src="boda10.jpg" class="itinerary-img" alt="Gracias">
+  </section>
+  <!-- SECCIÓN 9 Y 10 -->
+  <section class="section-parents">
+    <div class="section-title">Nuestros Padres</div>
+    <div class="parents-group">
+      <img src="novia.jpg" class="parent-image" alt="Novia">
+      <div class="parent-names">
+        Maritza Ruiz González<br>
+        <span class="ampersand">&</span>
+        Enrique Castro Diaz
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="parents-group">
+      <img src="Novio.jpg" class="parent-image" alt="Novio">
+      <div class="parent-names">
+        Isabel Cristina Reyes Sandoval<br>
+        <span class="ampersand">&</span>
+        José Francisco Reyes Avelino
+      </div>
+    </div>
+    <div class="divider" style="margin: 50px auto 30px;"></div>
+    <div class="section-title" style="margin-bottom: 30px;">Nuestros Padrinos</div>
+    <div class="godparents-group">
+      <div class="godparent-role">Velación</div>
+      <img src="Velacion.jpg" class="godparent-image" alt="Velación">
+      <div class="godparent-names">
+        Maria Isabel Ruiz González<br>
+        <span class="ampersand">&</span>
+        José Juan González Solis
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="godparents-group">
+      <div class="godparent-role">Anillos</div>
+      <img src="anillos.jpg" class="godparent-image" alt="Anillos">
+      <div class="godparent-names">
+        Marisela Ruiz González<br>
+        <span class="ampersand">&</span>
+        Jaime López Rosas
+      </div>
+    </div>
+  </section>
+  <!-- SECCIÓN 10: IMAGEN HORIZONTAL -->
+  <section class="section-parents-image">
+    <img src="boda11.jpg" class="parents-img" alt="Gracias">
+  </section>
+  <!-- SECCIÓN 11: CÓDIGO DE VESTIMENTA -->
+  <section class="section-dresscode">
+    <div class="dresscode-title">Código de Vestimenta</div>
+    <div class="dresscode-group">
+      <div class="dresscode-role">Mujeres</div>
+      <img src="Mujeres.jpg" class="dresscode-image" alt="Vestimenta Mujeres">
+      <div class="dresscode-text">
+        <span class="highlight">*</span> Blanco Exclusivo<br>
+        para la Novia.
+      </div>
+      <div class="dresscode-text" style="margin-top: 12px;">
+        Rojo, Vino y dorado<br>
+        exclusivo para el cortejo.
+      </div>
+    </div>
+    <div class="dresscode-divider"></div>
+    <div class="dresscode-group">
+      <div class="dresscode-role">Hombres</div>
+      <img src="Hombres.jpg" class="dresscode-image" alt="Vestimenta Hombres">
+      <div class="dresscode-text">
+        Traje Formal
+      </div>
+    </div>
+    <div class="kids-message">
+      <strong>Tus peques son bienvenidos</strong>
+      Logremos una noche llena de diversión<br>
+      y libre de accidentes.<br>
+      Te sugerimos mantener a tus niños<br>
+      vigilados durante el evento.
+    </div>
+    <div class="gift-section">
+      <div class="gift-title">Mesa de Regalos</div>
+      <img src="regalo.jpg" class="gift-box" alt="Caja de regalos">
+      <img src="Liver.jpg" class="gift-store-logo" alt="Liverpool">
+      <div class="gift-number">51705829</div>
+      <a href="https://mesaderegalos.liverpool.com.mx/milistaderegalos/51705829" target="_blank" class="gift-button">
+        Ver Mesa
+      </a>
+    </div>
+  </section>
+  <!-- SECCIÓN 12: IMAGEN SEPARADORA -->
+  <section class="section-dresscode-image">
+    <img src="boda12.jpg" class="dresscode-img" alt="Momentos">
+  </section>
+  <!-- SECCIÓN 13: RSVP -->
+  <section class="section-rsvp">
+    <div class="rsvp-wrapper">
+      <div class="rsvp-title">Confirma tu Asistencia</div>
+      <div class="rsvp-text">
+        Ayúdanos a preparar tu lugar. Por favor,<br>
+        confirma si asistirás a nuestra boda<br>
+        <strong>antes del 10 de noviembre.</strong>
+      </div>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdQIbObV9SGKx0rMQNBycKfwvqOZXcMo2sGbftfjDSigoGKiA/viewform?usp=sharing&ouid=108131160746918106034" 
+         target="_blank" 
+         class="rsvp-button">
+        Confirmar Asistencia
+      </a>
+    </div>
+  </section>
+  <!-- SECCIÓN 14: AGRADECIMIENTO FINAL -->
+  <section class="section-thanks">
+    <img src="7a.jpg" class="thanks-img" alt="Gracias">
+    <div class="thanks-overlay"></div>
+    <div class="thanks-text">
+      ¡Gracias por compartir este<br>
+      momento tan importante<br>
+      en nuestras vidas!
+    </div>
+  </section>
+  <div class="final-footer">
+    <div class="initials">D & J</div>
+    <div class="wedding-date">30 . NOV . 2025</div>
+  </div>
+  <!-- AUDIO -->
+  <audio id="weddingMusic" preload="auto" loop>
+    <source src="Cancion.mp3" type="audio/mpeg">
+  </audio>
+  <div id="audio-toggle" aria-label="Reproducir música de la boda">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="play-icon">
+      <path d="M8 5v14l11-7z"/>
+    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="pause-icon" style="display:none;">
+      <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+    </svg>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // === FORZAR INICIO EN SECCIÓN 1 ===
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'auto' });
+      }, 100);
+      // Activar transición (6 segundos)
+      document.documentElement.classList.add('loaded');
+
+      // === CONTADOR ===
+      const targetDate = new Date('November 30, 2025 17:00:00').getTime();
+      const daysEl = document.getElementById('days');
+      const hoursEl = document.getElementById('hours');
+      const minutesEl = document.getElementById('minutes');
+      const secondsEl = document.getElementById('seconds');
+      if (daysEl && hoursEl && minutesEl && secondsEl) {
+        const updateCountdown = () => {
+          const now = new Date().getTime();
+          const diff = targetDate - now;
+          if (diff <= 0) {
+            daysEl.textContent = '00';
+            hoursEl.textContent = '00';
+            minutesEl.textContent = '00';
+            secondsEl.textContent = '00';
+            return;
+          }
+          const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+          daysEl.textContent = String(days).padStart(2, '0');
+          hoursEl.textContent = String(hours).padStart(2, '0');
+          minutesEl.textContent = String(minutes).padStart(2, '0');
+          secondsEl.textContent = String(seconds).padStart(2, '0');
+        };
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+      }
+
+      // === CARRUSELES ===
+      const carousels = document.querySelectorAll('.image-carousel');
+      carousels.forEach(carousel => {
+        const images = carousel.querySelectorAll('.carousel-image');
+        if (images.length <= 1) return;
+        let currentIndex = 0;
+        const showNext = () => {
+          images[currentIndex].classList.remove('active');
+          currentIndex = (currentIndex + 1) % images.length;
+          images[currentIndex].classList.add('active');
+        };
+        setInterval(showNext, 3500);
+      });
+
+      // === SECCIÓN 3: SCROLL ACTIVATION ===
+      const poemBlocks = Array.from(document.querySelectorAll('.poem-block'));
+      let poemTicking = false;
+      const findClosestPoem = () => {
+        const center = window.innerHeight / 2;
+        let closest = null;
+        let minDist = Infinity;
+        poemBlocks.forEach(block => {
+          const rect = block.getBoundingClientRect();
+          const blockCenter = rect.top + rect.height / 2;
+          const dist = Math.abs(blockCenter - center);
+          if (dist < minDist) {
+            minDist = dist;
+            closest = block;
+          }
+        });
+        return closest;
+      };
+      const updatePoemActive = () => {
+        const active = findClosestPoem();
+        if (active) {
+          poemBlocks.forEach(b => b.classList.remove('active'));
+          active.classList.add('active');
+        }
+        poemTicking = false;
+      };
+      const onPoemScroll = () => {
+        if (!poemTicking) {
+          requestAnimationFrame(updatePoemActive);
+          poemTicking = true;
+        }
+      };
+      if (poemBlocks.length > 0) poemBlocks[0].classList.add('active');
+      window.addEventListener('scroll', onPoemScroll, { passive: true });
+
+      // === SECCIÓN 7: SCROLL ACTIVATION ===
+      const itineraryItems = Array.from(document.querySelectorAll('.itinerary-item'));
+      let itinTicking = false;
+      const findClosestItin = () => {
+        const center = window.innerHeight / 2;
+        let closest = null;
+        let minDist = Infinity;
+        itineraryItems.forEach(item => {
+          const rect = item.getBoundingClientRect();
+          const itemCenter = rect.top + rect.height / 2;
+          const dist = Math.abs(itemCenter - center);
+          if (dist < minDist) {
+            minDist = dist;
+            closest = item;
+          }
+        });
+        return closest;
+      };
+      const updateItinActive = () => {
+        const active = findClosestItin();
+        if (active) {
+          itineraryItems.forEach(i => i.classList.remove('active'));
+          active.classList.add('active');
+        }
+        itinTicking = false;
+      };
+      const onItinScroll = () => {
+        if (!itinTicking) {
+          requestAnimationFrame(updateItinActive);
+          itinTicking = true;
+        }
+      };
+      if (itineraryItems.length > 0) itineraryItems[0].classList.add('active');
+      window.addEventListener('scroll', onItinScroll, { passive: true });
+
+      // === AUDIO ===
+      const audio = document.getElementById('weddingMusic');
+      const button = document.getElementById('audio-toggle');
+      const playIcon = document.getElementById('play-icon');
+      const pauseIcon = document.getElementById('pause-icon');
+      let isPlaying = false;
+
+      // Pre-cargar audio
+      audio.load();
+
+      // Función para desbloquear audio en móviles
+      const unlockAudio = () => {
+        audio.play()
+          .then(() => {
+            audio.pause();
+            document.body.removeEventListener('touchstart', unlockAudio);
+            document.body.removeEventListener('mousedown', unlockAudio);
+          })
+          .catch(() => {});
+      };
+
+      // Escuchar primer toque/clic para desbloquear
+      document.body.addEventListener('touchstart', unlockAudio, { once: true });
+      document.body.addEventListener('mousedown', unlockAudio, { once: true });
+
+      // === BOTÓN DE AUDIO ===
+      button.addEventListener('click', () => {
+        if (isPlaying) {
+          audio.pause();
+          playIcon.style.display = 'block';
+          pauseIcon.style.display = 'none';
+          isPlaying = false;
+        } else {
+          audio.play()
+            .then(() => {
+              playIcon.style.display = 'none';
+              pauseIcon.style.display = 'block';
+              isPlaying = true;
+            })
+            .catch(e => {
+              console.log("Reproducción fallida:", e);
+            });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
